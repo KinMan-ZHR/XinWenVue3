@@ -17,9 +17,19 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      //配置element-plus的插件采用sass的方式配色系统
+      resolvers: [ElementPlusResolver({importStyle: 'sass'})],
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '' +
+            '@use "src/pages/shopping/styles/element/index.scss" as *;\n' +
+            '@use "src/pages/shopping/styles/var.scss" as *;'
+      },
+    },
+  },
   build: {
     rollupOptions: {
       input: {
@@ -43,9 +53,9 @@ export default defineConfig({
     // 5. 重写后的地址就会被代理到target配置
     server: {
         proxy: {
-            '/api': {
+            '/local': {
                 target: 'http://localhost:8080',
-                rewrite: (path) => path.replace(/^\/api/, '')
+                rewrite: (path) => path.replace(/^\/local/, '')
             }
         }
     },

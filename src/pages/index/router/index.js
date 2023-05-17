@@ -19,6 +19,11 @@ const routes = [
         name: 'news',
         component: () => import('../../../../news.html')
     },
+    {
+        path: '/shopping',
+        name: 'shopping',
+        component: () => import('../../../../shopping.html')
+    }
 ]
 
 // 创建路由对象
