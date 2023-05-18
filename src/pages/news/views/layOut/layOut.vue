@@ -46,9 +46,7 @@ background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
                                         <el-dropdown-item><router-link to="/login">login
                                         </router-link>
                                         </el-dropdown-item>
-                                        <el-dropdown-item>
-                                            <button @click="logout">logOut</button>
-                                        </el-dropdown-item>
+                                        <el-dropdown-item @click="logout">logOut</el-dropdown-item>
                                     </el-dropdown-menu>
                                 </template>
                             </el-dropdown>
@@ -69,7 +67,7 @@ background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
 
 <script lang="ts" setup>
 
-import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue'
+import { Menu as IconMenu, Message, Setting} from '@element-plus/icons-vue'
     import {useRouter} from 'vue-router'
 
     const router = useRouter()
