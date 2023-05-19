@@ -14,7 +14,9 @@ httpRequest.interceptors.request.use(config => {
 )
 // 响应拦截器
 httpRequest.interceptors.response.use(response => {
-    return response;
+     //   console.log(response)
+    //一般而言，只需要返回data即可
+        return response.data;
 }, error => {
         return Promise.reject(error);
     }

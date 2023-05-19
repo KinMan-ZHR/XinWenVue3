@@ -1,10 +1,5 @@
 import request from  './httpRequest.js'
-export const getNewsListAPI= () => {
-    return request({
-        url: '/adNews',
-        method: 'GET'
-    })
-}
+
 export const addNewsAPI= (data) => {
     return request({
         url: '/adNews',
@@ -24,5 +19,13 @@ export const updateNewsAPI= (data) => {
         url: '/adNews',
         method: 'PUT',
         data
+    })
+}
+//条件查询新闻,且分页
+export const getNewsByConditionAPI= (data) => {
+    return request({
+        url: '/adNews',
+        method: 'GET',
+        params:data
     })
 }
