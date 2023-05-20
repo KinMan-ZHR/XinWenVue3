@@ -16,12 +16,12 @@ const routes = [
     },
     {
         path: '/news',
-        name: 'news',
+        username: 'news',
         component: () => import('../../../../news.html')
     },
     {
         path: '/shopping',
-        name: 'shopping',
+        username: 'shopping',
         component: () => import('../../../../shopping.html')
     }
 ]

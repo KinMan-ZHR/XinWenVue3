@@ -51,22 +51,22 @@ const tableRowClassName = ({
 const tableData: User[] = [
   {
     date: '2016-05-03',
-    name: 'Tom',
+    username: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
     date: '2016-05-02',
-    name: 'Tom',
+    username: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
     date: '2016-05-04',
-    name: 'Tom',
+    username: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
     date: '2016-05-01',
-    name: 'Tom',
+    username: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
 ]

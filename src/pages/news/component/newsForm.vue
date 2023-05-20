@@ -69,11 +69,12 @@ const emit= defineEmits(['getNewsList'])
 <template>
   <!--  对话框部分,展示标题-->
   <el-dialog v-model="dialogFormVisible" :title=dialogTitle >
+    <!--    表单部分,绑定表单对象以及规则对象-->
     <el-form :model="form" :rules="rules">
-      <el-form-item label="新闻标题" :label-width="formLabelWidth">
+      <el-form-item prop="title" label="新闻标题" :label-width="formLabelWidth">
         <el-input v-model="form.title" autocomplete="off"/>
       </el-form-item>
-      <el-form-item label="新闻地址(URL)" :label-width="formLabelWidth">
+      <el-form-item prop="url" label="新闻地址(URL)" :label-width="formLabelWidth">
         <el-input v-model="form.url" autocomplete="off"/>
       </el-form-item>
     </el-form>

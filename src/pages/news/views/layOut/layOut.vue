@@ -21,7 +21,7 @@
             <el-header style="background-color: #FA8BFF;
 background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
 ">
-                <el-row>
+                <el-row :align="'bottom'">
                     <el-col :span="12">
                         <div class="logo">
                             <img
@@ -36,18 +36,30 @@ background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
                     <el-col :span="12">
                         <div class="toolbar" style="text-align: right; font-size: 30px">
                             <el-dropdown>
-                                <el-icon style="margin-right: 8px; margin-top: 5px" size="large"
+                                <el-icon style="margin-right: 8px;" size="large"
                                 ><setting/></el-icon>
                                 <template #dropdown>
                                     <el-dropdown-menu>
-                                        <el-dropdown-item><router-link to="/login">login
-                                        </router-link>
-                                        </el-dropdown-item>
-                                        <el-dropdown-item @click="logout">logOut</el-dropdown-item>
+                                      <template v-if="userStore.userInfo.data">
+                                        <el-dropdown-item>个人中心</el-dropdown-item>
+                                        <el-dropdown-item>修改密码</el-dropdown-item>
+                                        <el-dropdown-item >
+                                          <el-popconfirm @confirm="logout" title="退出？" confirm-button-text="确认" cancel-button-text="取消">
+                                            <template #reference>
+                                              退出登录
+                                            </template>
+                                        </el-popconfirm>
+                                      </el-dropdown-item>
+                                      </template>
+                                      <template v-else>
+                                        <el-dropdown-item @click="login">login</el-dropdown-item>
+                                      </template>
                                     </el-dropdown-menu>
                                 </template>
                             </el-dropdown>
-                            <span >Tom</span>
+<!--                          默认显示未登录,若userStore.userInfo.data.user.username不为空则显示-->
+                          <el-icon><User/></el-icon>
+                          <span style="font-size: 30px; margin-right: 10px; ">{{userStore.userInfo.data?userStore.userInfo.data.user.username:'未登录'}}</span>
                         </div>
                     </el-col>
                 </el-row>
@@ -63,13 +75,17 @@ background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
 </template>
 
 <script lang="ts" setup>
-
-import { Menu as IconMenu, Message, Setting} from '@element-plus/icons-vue'
+import { Menu as IconMenu, Message, Setting,User} from '@element-plus/icons-vue'
     import {useRouter} from 'vue-router'
-
+import {useUserStore} from "@/pages/news/dataStore/userdata.js"
+const userStore = useUserStore()
     const router = useRouter()
 
     const logout = () => {
+        userStore.clearUserInfo()
+        router.push('/login')
+    }
+    const login = () => {
         router.push('/login')
     }
     const userControl = () => {

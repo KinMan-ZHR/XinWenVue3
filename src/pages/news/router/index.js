@@ -2,28 +2,28 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 
 const newsAd = () => import('../views/layOut/administer/news.vue')
-const login = () => import('../views/login.vue')
-const register = () => import('../views/register.vue')
+const login = () => import('../views/login/login.vue')
+const register = () => import('../views/login/register.vue')
 const layOut = () => import('../views/layOut/layOut.vue')
 const display = () => import('../views/layOut/customer/display.vue')
 const usersAd = () => import('../views/layOut/administer/users.vue')
 const routes = [{}, {
     path: '/layOut',
-    name: 'home',
+    username: 'home',
     component: layOut,
     children: [{
         path: '/newsAd',
-        name: 'newsAd',
+        username: 'newsAd',
         component: newsAd
         },
         {
             path: '',
-            name: 'display',
+            username: 'display',
             component: display
         },
         {
             path: '/usersAd',
-            name: 'usersAd',
+            username: 'usersAd',
             component: usersAd
 
         }]
@@ -32,17 +32,17 @@ const routes = [{}, {
     redirect: '/layOut'
 }, {
     path: '/:pathMatch(.*)*',
-    name: '404',
+    username: '404',
     component: () => import('../../../components/404.vue')
 
 }, {
     path: '/login',
-    name: 'login',
+    username: 'login',
     component: login
 },
     {
         path: '/register',
-        name: 'register',
+        username: 'register',
         component: register
     }]
 

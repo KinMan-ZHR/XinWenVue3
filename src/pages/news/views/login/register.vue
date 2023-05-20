@@ -24,12 +24,13 @@
 #background{
   width: 100%;
   height: 100%;
-  background: url("../assets/bg2.jpg");
+  background: url("../../assets/loginbg.jpg");
   background-size:100% 100%;
   position: fixed;
   top: 0;
   left: 0;
 }
+//下列字段是注册框的样式,其中透明度的设置是为了让背景图片能够显示出来，字段为rgba(0,0,0,0.5)时，透明度为50%
 #contain{
   width: 580px;
   height: 560px;
@@ -81,13 +82,13 @@ button{
   margin-left: 40px;
 }
 </style>
-//js
-<script>
+
+<script >
 export default {
-  name: "register",
+  username: "register",
   data(){
     return{
-      name:'',
+      username:'',
       password:'',
       mail:'',
       tel:''

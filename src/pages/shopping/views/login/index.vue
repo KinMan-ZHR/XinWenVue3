@@ -89,7 +89,7 @@ const doLogin = () => {
     <section class="login-section">
       <div class="wrapper">
         <nav>
-          <a href="javascript:;">账户登录</a>
+          <a href="javascript:">账户登录</a>
         </nav>
         <div class="account-box">
           <div class="form">

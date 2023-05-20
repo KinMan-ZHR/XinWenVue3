@@ -90,7 +90,7 @@ const updateDisabledStatus = (specs, pathMap) => {
 
 
 export default {
-  name: 'XtxGoodSku',
+  username: 'XtxGoodSku',
   props: {
     // specs:所有的规格信息  skus:所有的sku组合
     goods: {

@@ -34,7 +34,7 @@ const addCart = () => {
     // 规则已经选择  触发action
     cartStore.addCart({
       id: goods.value.id,
-      name: goods.value.name,
+      username: goods.value.username,
       picture: goods.value.mainPictures[0],
       price: goods.value.price,
       count: count.value,
