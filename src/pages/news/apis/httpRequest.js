@@ -18,7 +18,16 @@ httpRequest.interceptors.request.use(config => {
     if (token) {
         config.headers['token'] = token
     }
-
+    //拦截管理员请求，验证用户权限，如果identity 为true放行，否则抛出错误
+    if (config.url.includes("/ad")){
+            if (!userStore.userInfo.data.user.identity){
+                ElMessage({
+                    type: 'warning',
+                    message: '您没有权限访问该页面'
+                })
+                throw new Error('您没有权限访问该页面')
+            }
+    }
     return config;
 }, error => {
         return Promise.reject(error);

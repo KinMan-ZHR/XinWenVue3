@@ -9,3 +9,34 @@ export const loginAPI = ({username,password}) => {
     }
   });
 };
+export const registerAPI = ({username,password}) => {
+    return request({
+      url: "/register",
+      method: "post",
+      data:{
+          username,
+          password
+      }
+    });
+  };
+export const getUserListAPI = (data) => {
+    return request({
+      url: "/adUser",
+      method: "get",
+        params:data
+    });
+  };
+export const deleteUserAPI = (data) => {
+    return request({
+      url: "/adUser",
+      method: "delete",
+        params:data
+    });
+  };
+export const updateUserAPI = (data) => {
+    return request({
+      url: "/adUser",
+      method: "put",
+        data
+    });
+  };
