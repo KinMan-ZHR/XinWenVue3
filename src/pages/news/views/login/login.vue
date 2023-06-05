@@ -97,14 +97,8 @@ const handleLogin = () => {
       <el-button type="primary" @click="handleLogin">登录</el-button>
     </div>
   </el-card>
-
-
-  <router-view></router-view>
 </div>
-
-
 </template>
-//css
 <style scoped>
 .background{
   width: 100%;

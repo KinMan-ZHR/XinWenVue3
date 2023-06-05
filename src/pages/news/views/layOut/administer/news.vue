@@ -16,7 +16,6 @@ const pageInfo = ref({
   small :ref(false),
   background : ref(false),
   disabled : ref(false)
-
 })
 //     todo 弹窗表单
 const setTitle = (title) => {
@@ -154,7 +153,7 @@ const filteredList=async ()=>{
       />
     </el-scrollbar>
   </el-main>
-
+<!--父辈可以通过formInstance知道里面的内容-->
   <news-form ref="formInstance" @getNewsList="filteredList"/>
 
 </template>

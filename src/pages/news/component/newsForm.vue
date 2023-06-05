@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {reactive,ref} from "vue";
 import {addNewsAPI, updateNewsAPI} from "@/pages/news/apis/NewsListHandler.js";
-import {timestamp} from "@vueuse/core";
+import {now, timestamp} from "@vueuse/core";
 const formLabelWidth = '140px'
 //reactive 用于将对象转化为响应式对象,在vue3中,ref只能用于基本类型,reactive可以用于对象
 //欲要暴露form及其属性,需要使用reactive，并在setup中暴露出去
@@ -34,6 +34,7 @@ const dataEcho = (data) => {
   form.updateTime = data.updateTime
 }
 const submit = () => {
+  form.updateTime = timestamp()
   if (dialogTitle.value === '新增新闻') {
     console.log('新增')
     add()

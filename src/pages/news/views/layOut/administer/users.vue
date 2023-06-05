@@ -1,3 +1,54 @@
+<script lang="ts" setup>
+import {defineComponent, onMounted, reactive, ref} from "vue";
+import {Edit,Operation,Delete} from "@element-plus/icons-vue";
+import InquireBox from "@/components/inquireBox.vue";
+import {deleteUserAPI, getUserListAPI,updateUserAPI} from "@/pages/news/apis/usersHandler.js";
+import UserForm from "@/pages/news/component/userDialog.vue";
+import UserDialog from "@/pages/news/component/userDialog.vue";
+//用于获取表单实例
+const dialogRef=ref(null)
+const getData = (data: any) => {
+  //获取查询条件
+  data.inqureInfo = data;
+  console.log(data.inqureInfo);
+};
+const tableData=ref([])
+onMounted(
+    () => {
+      getUserData()
+    }
+)
+
+const getUserData=async ()=>{
+  //获取用户数据
+  const res=await  getUserListAPI()
+  console.log(res);
+  tableData.value=res.data.rows
+}
+
+//todo:删除用户信息
+const deleteUser=async (id) => {
+  console.log("删除用户信息");
+  const res = await deleteUserAPI(id)
+  console.log(res);
+  if (res.code === 1) {
+    await getUserData()
+  }
+}
+//定义查询条件的数据结构
+interface InquireBoxInfo {
+  label: string;
+  key: string;
+  value: string;
+  options: any[];
+  type: string;
+}
+const data = reactive({
+  inquireBoxInfo: [] as InquireBoxInfo[],
+  inquireInfo: {},
+})
+
+</script>
 <template>
   <div class="users">
     <div class="users-inquire" style="display: none">
@@ -25,7 +76,7 @@
           </template>
           <template #default="{row}">
             <div style="text-align: center;flex-flow: row">
-              <el-icon @click="editUser(row.id)" size="20" color="orange"><Edit /></el-icon>
+              <el-icon @click="dialogRef.method.setDialog('修改用户信息');dialogRef.method.dataEcho(row)" size="20" color="orange"><Edit /></el-icon>
               <el-icon @click="deleteUser(row.id)" size="20" color="red"><Delete /></el-icon>
             </div>
           </template>
@@ -33,54 +84,7 @@
       </el-table>
     </div>
   </div>
+<!--  对话框部分-->
+    <user-dialog ref="dialogRef" @getUserList="getUserData" ></user-dialog>
+
 </template>
-<script lang="ts" setup>
-import {defineComponent, onMounted, reactive, ref} from "vue";
-import {Edit,Operation,Delete} from "@element-plus/icons-vue";
-import InquireBox from "@/components/inquireBox.vue";
-import {deleteUserAPI, getUserListAPI} from "@/pages/news/apis/usersHandler.js";
-const getData = (data: any) => {
-  //获取查询条件
-  data.inqureInfo = data;
-  console.log(data.inqureInfo);
-};
-const tableData=ref([])
-onMounted(
-  () => {
-    getUseData()
-  }
-)
-const getUseData=async ()=>{
-  //获取用户数据
-  const res=await  getUserListAPI()
-  console.log(res);
-  tableData.value=res.data.rows
-}
-//todo:编辑用户信息
-const editUser=async (id)=>{
-  console.log("编辑用户信息");
-
-}
-//todo:删除用户信息
-const deleteUser=async (id) => {
-  console.log("删除用户信息");
-  const res = await deleteUserAPI(id)
-  console.log(res);
-  if (res.code === 1) {
-    await getUseData()
-  }
-}
-//定义查询条件的数据结构
-interface InquireBoxInfo {
-  label: string;
-  key: string;
-  value: string;
-  options: any[];
-  type: string;
-}
-const data = reactive({
-  inquireBoxInfo: [] as InquireBoxInfo[],
-  inquireInfo: {},
-})
-
-</script>

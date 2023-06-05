@@ -40,3 +40,10 @@ export const updateUserAPI = (data) => {
         data
     });
   };
+export const addUserAPI = (data) => {
+    return request({
+      url: "/adUser",
+      method: "post",
+        data
+    });
+  };

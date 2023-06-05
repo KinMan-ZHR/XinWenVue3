@@ -1,5 +1,5 @@
 <template>
-    <el-container class="layout-container-demo" style="height: 750px; border: 1px solid #eee">
+    <el-container class="layout-container-demo" style="height: 750px">
         <el-aside width="200px" style="border: 1px #eee">
 
                 <el-menu :default-openeds="['1', '3']">
@@ -64,12 +64,7 @@ background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
                     </el-col>
                 </el-row>
             </el-header>
-
            <router-view></router-view>
-
-            <el-footer style="text-align: center; font-size: 30px; color: #ccc; margin-top: 10px">
-                新闻发布系统
-            </el-footer>
         </el-container>
     </el-container>
 </template>
@@ -96,6 +91,16 @@ const userStore = useUserStore()
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+//内容铺满不留边框
+    .layout-container-demo {
+        margin: 0;
+      border: none;
+    }
 
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
 </style>

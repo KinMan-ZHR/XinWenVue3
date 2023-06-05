@@ -20,7 +20,7 @@ httpRequest.interceptors.request.use(config => {
     }
     //拦截管理员请求，验证用户权限，如果identity 为true放行，否则抛出错误
     if (config.url.includes("/ad")){
-            if (!userStore.userInfo.data.user.identity){
+            if (!userStore.userInfo.data||!userStore.userInfo.data.user.identity){
                 ElMessage({
                     type: 'warning',
                     message: '您没有权限访问该页面'
