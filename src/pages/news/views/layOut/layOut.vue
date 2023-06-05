@@ -1,9 +1,9 @@
 <template>
-    <el-container class="layout-container-demo" style="height: 750px">
+    <el-container class="layout-container-demo" style="height: 100%">
         <el-aside width="200px" style="border: 1px #eee">
 
                 <el-menu :default-openeds="['1', '3']">
-                    <el-menu-item index="2-1">
+                    <el-menu-item index="2-1" @click="newsDisplay()">
                         <el-icon><icon-menu/></el-icon>
                         新闻展示
                     </el-menu-item>
@@ -19,7 +19,7 @@
         </el-aside>
         <el-container>
             <el-header style="background-color: #FA8BFF;
-background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%); background-size: 100% 100%
 ">
                 <el-row :align="'bottom'">
                     <el-col :span="12">
@@ -89,6 +89,10 @@ const userStore = useUserStore()
     const newsControl = () => {
         router.push('/newsAd')
     }
+    const newsDisplay = () => {
+        router.push('/')
+    }
+
 </script>
 
 <style scoped lang="scss">

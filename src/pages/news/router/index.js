@@ -7,17 +7,29 @@ const register = () => import('../views/login/register.vue')
 const layOut = () => import('../views/layOut/layOut.vue')
 const display = () => import('../views/layOut/customer/display.vue')
 const usersAd = () => import('../views/layOut/administer/users.vue')
-const routes = [{}, {
+
+function singleDisplay() {
+    return import('../component/newsSingle.vue')
+}
+
+const routes = [ {
     path: '/layOut',
     username: 'home',
     component: layOut,
-    children: [{
+    children: [
+        // 内容页子路由
+        {
         path: '/newsAd',
         username: 'newsAd',
         component: newsAd
         },
         {
-            path: '',
+            path: '/newsDisplay',
+            username: 'singleDisplay',
+            component: singleDisplay
+        },
+        {
+            path:'',
             username: 'display',
             component: display
         },
@@ -27,7 +39,8 @@ const routes = [{}, {
             component: usersAd
 
         }]
-}, {
+},
+    {
     path: '/',
     redirect: '/layOut'
 }, {
